@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>复选框 选择内容</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style type="text/css">
+    li {
+        list-style: none;
+    }
+    
+    input {
+        vertical-align: middle;
+    }
+    </style>
+</head>
+
+<body>
+    <p>
+        <label>
+            <input type="checkbox" name="allBox">全选</label>
+    </p>
+    <div class="choose">
+        <ul>
+            <li>
+                <label>
+                    <input type="checkbox" name="box">一这是一个例子</label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="box">二这是一个例子</label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="box">三这是一个例子</label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="box">四这是一个例子</label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="box">五这是一个例子</label>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("input[name=allBox]").click(function() {
+            $('[name=box]:checkbox').prop("checked", this.checked);
+        });
+        $('[name=box]:checkbox').click(function() {
+            var $tmp = $('[name=box]:checkbox');
+            $('input[name=allBox]').prop('checked', $tmp.length == $tmp.filter(':checked').length);
+        });
+    })
+    </script>
+</body>
+
+</html>
