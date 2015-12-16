@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>复选框 选择内容</title>
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <style type="text/css">
+    li {
+        list-style: none;
+    }
+    </style>
+</head>
+
+<body>
+    <p><strong>您选择的是：</strong><span></span></p>
+    <div class="choose">
+        <ul>
+            <li>
+                <label>
+                    <input type="checkbox">一这是和</label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox">二这是和</label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox">三这是和</label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox">四这是和</label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox">五这是和</label>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("input").on('click', function() {
+            var $this = $(this);
+            var chooseBox = $this.is(":checked");
+            var chooseText = $this.parent("label").text();
+            var xx=$("input:checked").parent().map(function(){return $(this).text();}).get().join(", ");
+           $("p span").text(xx);
+        })
+
+    })
+    </script>
+</body>
+
+</html>
