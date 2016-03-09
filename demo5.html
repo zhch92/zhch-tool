@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <title>缓存应用</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+</head>
+
+<body>
+    <p>缓存应用</p>
+    <input type="text" id="keyWord">
+    <button onclick="cacheSave()">缓存</button>
+    <ul></ul>
+    <button onclick="clearCache()">清除缓存</button>
+    <script>
+
+    var str = '';
+    function init(val) {
+        $("ul").empty();
+        var storage = window.localStorage;
+        if (storage.length > 0) {
+            str = storage.str;
+            var arr = str.split(",").reverse();
+            for (var i = 0; i < arr.length; i++) {
+                if (val == arr[i]) {
+                    alert(arr[i]);
+                    return false;
+                }
+                $("ul").append('<li>' + arr[i] + '</li>')
+            }
+        }
+                return true;
+    }
+   init()
+    function cacheSave() {
+        var keyWord = $.trim($("#keyWord").val());
+        if (keyWord != "") {
+            if (init(keyWord)) {
+                if (str !='') { str = str + "," + keyWord;} else { str = keyWord;}
+                localStorage.setItem("str", str);
+                str = localStorage.getItem("str");
+                  init()
+            }
+        }
+    }
+    function clearCache(){
+        $("ul").empty();
+        localStorage.clear();
+    }
+    </script>
+</body>
+
+</html>
