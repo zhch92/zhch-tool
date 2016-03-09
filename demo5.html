@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <title>缓存应用</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script type="text/javascript" src="js/jquery.min.js"></script>
 </head>
 
@@ -15,11 +14,10 @@
     <ul></ul>
     <button onclick="clearCache()">清除缓存</button>
     <script>
-
     var str = '';
     function init(val) {
         $("ul").empty();
-        var storage = window.localStorage;
+        var storage = localStorage;
         if (storage.length > 0) {
             str = storage.str;
             var arr = str.split(",").reverse();
@@ -47,9 +45,9 @@
     }
     function clearCache(){
         $("ul").empty();
+        str = '';
         localStorage.clear();
     }
     </script>
 </body>
-
 </html>
